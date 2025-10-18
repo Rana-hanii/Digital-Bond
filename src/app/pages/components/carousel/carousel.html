@@ -1,0 +1,23 @@
+<div class="card">
+  <p-carousel 
+    [value]="items" 
+    [numVisible]="numVisible"
+    [numScroll]="numScroll"
+    [circular]="circular"
+    [responsiveOptions]="responsiveOptions"
+    [autoplayInterval]="autoplayInterval">
+    <ng-template pTemplate="item" let-item>
+      <div class="m-2 p-4">
+        <div class="rounded-2xl hover:scale-105 transition-all duration-500 hover:shadow-2xl/40 overflow-hidden">
+          <div class="hover:rotate-6 hover:scale-110 transition-all duration-500">
+            <img 
+              [src]="getImagePath(item.image)"
+              [alt]="item.name || 'carousel image'" 
+              class="w-full rounded-border" />
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
