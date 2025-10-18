@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@import 'flowbite/src/themes/default';
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+/**fonts */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.font-atma {
+  font-family: 'Atma', system-ui;
+}
+.font-poppins {
+  font-family: 'Poppins', system-ui;
+}
+
+/* !general styles */
+span{
+    position: relative;
+}
+span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background-color: #ab2322;
+}
