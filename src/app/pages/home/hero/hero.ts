@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { signal } from '@angular/core';
 import AOS from 'aos';
 
@@ -7,6 +7,7 @@ import AOS from 'aos';
   selector: 'app-hero',
   templateUrl: './hero.html',
   styleUrl: './hero.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Hero implements AfterViewInit {
   private vantaEffect: any;
@@ -17,29 +18,40 @@ export class Hero implements AfterViewInit {
   async ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
 
+
     AOS.init({
       duration: 600,
-      once: true, 
+      once: true,
       easing: 'ease-out',
+      disable: () => window.innerWidth < 768,
     });
 
-    
+
     const observer = new IntersectionObserver(
       async (entries) => {
         if (entries[0].isIntersecting) {
           observer.disconnect();
-          await this.loadVantaEffect();
+
+        
+          requestIdleCallback(async () => {
+            await this.delayedVantaLoad();
+          });
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     observer.observe(this.el.nativeElement);
   }
 
+  
+  private async delayedVantaLoad() {
+    await new Promise((res) => setTimeout(res, 800)); 
+    await this.loadVantaEffect();
+  }
+
   private async loadVantaEffect() {
     if (this.vantaLoaded()) return;
-
     await this.ensureVantaLoaded();
 
     if ((window as any).VANTA?.WAVES) {
@@ -68,6 +80,7 @@ export class Hero implements AfterViewInit {
         const s = document.createElement('script');
         s.src = src;
         s.async = true;
+        s.defer = true;
         s.onload = () => resolve();
         document.body.appendChild(s);
       });

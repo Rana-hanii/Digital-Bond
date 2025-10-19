@@ -21,15 +21,15 @@ export class Careers implements OnInit {
 
   ngOnInit() {
     this.teams = [
-      { name: 'team', image: 'slider1.jpg' },
-      { name: 'team', image: 'slider2.jpg' },
-      { name: 'team', image: 'slider3.png' },
-      { name: 'team', image: 'slider4.png' },
-      { name: 'team', image: 'slider5.png' },
-      { name: 'team', image: 'slider6.jpg' },
-      { name: 'team', image: 'slider7.jpg' },
-      { name: 'team', image: 'slider8.png' },
-      { name: 'team', image: 'slider9.jpg' },
+      { name: 'team', image: 'slider1.webp' },
+      { name: 'team', image: 'slider2.webp' },
+      { name: 'team', image: 'slider3.webp' },
+      { name: 'team', image: 'slider4.webp' },
+      { name: 'team', image: 'slider5.webp' },
+      { name: 'team', image: 'slider6.webp' },
+      { name: 'team', image: 'slider7.webp' },
+      { name: 'team', image: 'slider8.webp' },
+      { name: 'team', image: 'slider9.webp' },
     ];
     this.responsiveOptions = [
       { breakpoint: '1400px', numVisible: 4, numScroll: 1 },
