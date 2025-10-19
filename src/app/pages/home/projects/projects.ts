@@ -20,7 +20,7 @@ export class Projects {
     if (this.isBrowser()) {
       Aos.init({
         duration: 500,
-        once: false,
+        once: false ,
         mirror: false,
         easing: 'ease-out-cubic',
         startEvent: 'DOMContentLoaded',

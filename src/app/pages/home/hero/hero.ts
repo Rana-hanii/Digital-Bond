@@ -15,8 +15,8 @@ export class Hero implements AfterViewInit {
   async ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
     setTimeout(() =>  AOS.init({
-      duration: 600,
-      once: true,
+      duration: 500,
+      once: false,
       easing: 'ease-out',
       disable: () => window.innerWidth < 768,
     }), 1000);
