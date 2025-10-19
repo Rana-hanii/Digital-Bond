@@ -6,16 +6,4 @@
     background-size: cover;
 }
 
-span{
-    position: relative;
-}
-span::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 70px;
-  height: 4px;
-  background-color: #ab2322;
- 
-}
+
