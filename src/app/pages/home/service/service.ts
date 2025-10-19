@@ -18,7 +18,7 @@ export class Service {
 
   ngAfterViewInit() {
     if (this.isBrowser()) {
-      const isMobile = window.innerWidth < 768; // ممكن تغيري الرقم حسب تصميمك
+      const isMobile = window.innerWidth < 768; 
 
       Aos.init({
         duration: 500,
