@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { Carousel } from '../../components/carousel/carousel';
 import { ITeam } from '../../../core/interfaces/ITeam';
-
-
+import { isPlatformBrowser } from '@angular/common';
+import Aos from 'aos';
 
 @Component({
   selector: 'app-careers',
@@ -13,6 +13,11 @@ import { ITeam } from '../../../core/interfaces/ITeam';
 export class Careers implements OnInit {
   teams: ITeam[] = [];
   responsiveOptions: any[] = [];
+  isBrowser = signal(false);
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser.set(isPlatformBrowser(this.platformId));
+  }
 
   ngOnInit() {
     this.teams = [
@@ -26,13 +31,24 @@ export class Careers implements OnInit {
       { name: 'team', image: 'slider8.png' },
       { name: 'team', image: 'slider9.jpg' },
     ];
-     this.responsiveOptions = [
+    this.responsiveOptions = [
       { breakpoint: '1400px', numVisible: 4, numScroll: 1 },
       { breakpoint: '1199px', numVisible: 3, numScroll: 1 },
       { breakpoint: '767px', numVisible: 1, numScroll: 1 },
     ];
   }
-  }
-
-  
-
+   ngAfterViewInit() {
+     
+      if (this.isBrowser()) {
+        Aos.init({
+          duration: 500,
+          once: false,
+          mirror: false,
+          easing: 'ease-out-cubic',
+          startEvent: 'DOMContentLoaded',
+          offset: 150,
+        });
+        Aos.refresh();
+      }
+    }
+}

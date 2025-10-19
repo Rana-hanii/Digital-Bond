@@ -25,7 +25,7 @@ export class App {
     this.ngxSpinnerService.show();
     setTimeout(() => {
       this.ngxSpinnerService.hide();
-    }, 3000);
+    }, 1000);
 
     // * SEO Meta Tags
     this.titleService.setTitle('Digital Bond | Creative Marketing Agency');

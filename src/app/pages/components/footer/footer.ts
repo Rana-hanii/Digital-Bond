@@ -1,35 +1,43 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
+import { Component, Inject, inject, PLATFORM_ID, signal } from '@angular/core';
+import Aos from 'aos';
 
 @Component({
   selector: 'app-footer',
   imports: [],
   templateUrl: './footer.html',
-  styleUrl: './footer.css'
+  styleUrl: './footer.css',
 })
 export class Footer {
-   isHeroVisible = signal(true);
   activeSection = signal('hero');
 
-  private platformId = inject(PLATFORM_ID);
-  isBrowser = signal(isPlatformBrowser(this.platformId));
+  isBrowser = signal(false);
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser.set(isPlatformBrowser(this.platformId));
+  }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-        // تعيين القسم الأول (hero) كقسم نشط عند بدء التشغيل
-        this.activeSection.set('hero');
-        this.isHeroVisible.set(true);
-      
-        // التمرير إلى أعلى الصفحة عند التحميل
-        window.scrollTo(0, 0);
-      
-        // تأخير بدء مراقبة الأقسام لضمان تحميل الصفحة بالكامل
-        window.addEventListener('load', () => {
-          this.observeSections();
-        });
+      this.activeSection.set('hero');
+      window.addEventListener('load', () => {
+        this.observeSections();
+      });
     }
   }
-
+  ngAfterViewInit() {
+    if (this.isBrowser()) {
+      Aos.init({
+        duration: 500,
+        once: false,
+        mirror: false,
+        easing: 'ease-out-cubic',
+        startEvent: 'DOMContentLoaded',
+        offset: 150,
+      });
+      Aos.refresh();
+    }
+  }
   private observeSections() {
     const sections = document.querySelectorAll('section[id]');
     if (!sections.length) return;
@@ -39,13 +47,12 @@ export class Footer {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
             this.activeSection.set(entry.target.id);
-            this.isHeroVisible.set(entry.target.id === 'hero');
           }
         });
       },
       {
         threshold: 0.5,
-        rootMargin: '-50px 0px'
+        rootMargin: '-50px 0px',
       }
     );
 
@@ -60,5 +67,4 @@ export class Footer {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
 }

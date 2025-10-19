@@ -1,7 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
 import { signal } from '@angular/core';
-import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
-
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  OnDestroy,
+  PLATFORM_ID,
+} from '@angular/core';
+import AOS from 'aos';
 
 declare global {
   interface Window {
@@ -13,11 +20,9 @@ declare global {
   selector: 'app-hero',
   imports: [],
   templateUrl: './hero.html',
-  styleUrl: './hero.css'
+  styleUrl: './hero.css',
 })
 export class Hero implements AfterViewInit, OnDestroy {
-
-
   private vantaEffect: any;
   vantaLoaded = signal(false);
 
@@ -25,7 +30,14 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   async ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
-
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: false,
+      easing: 'ease-out-cubic',
+      startEvent: 'DOMContentLoaded', // تشتغل بعد تحميل الصفحة
+      offset: 0,
+    });
     try {
       await this.ensureVantaLoaded();
 
@@ -43,7 +55,7 @@ export class Hero implements AfterViewInit, OnDestroy {
           shininess: 1.0,
           waveHeight: 18.0,
           waveSpeed: 1.3,
-          zoom: 0.65
+          zoom: 0.65,
         });
 
         // حدثنا signal عشان نشير إنه جاهز
@@ -82,16 +94,18 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     return loadScript(threeCdn)
       .then(() => loadScript(vantaCdn))
-      .then(() =>
-        new Promise<void>((resolve, reject) => {
-          const start = Date.now();
-          const check = () => {
-            if ((window as any).VANTA) return resolve();
-            if (Date.now() - start > 5000) return reject(new Error('VANTA did not become available in time'));
-            setTimeout(check, 100);
-          };
-          check();
-        })
+      .then(
+        () =>
+          new Promise<void>((resolve, reject) => {
+            const start = Date.now();
+            const check = () => {
+              if ((window as any).VANTA) return resolve();
+              if (Date.now() - start > 5000)
+                return reject(new Error('VANTA did not become available in time'));
+              setTimeout(check, 100);
+            };
+            check();
+          })
       );
   }
 }

@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
 
+
 @Component({
   selector: 'app-navbar',
   imports: [],
@@ -18,6 +19,11 @@ export class Navbar {
     if (isPlatformBrowser(this.platformId)) {
       this.observeSections();
     }
+  }
+
+  ngAfterViewInit(): void {
+    
+ 
   }
 
   private observeSections() {

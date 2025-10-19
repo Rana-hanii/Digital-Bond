@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, signal, computed } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject, signal, computed, Inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { ToastModule } from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
+import Aos from 'aos';
 
 @Component({
   selector: 'app-contact',
@@ -26,6 +27,24 @@ import { MessageModule } from 'primeng/message';
 export class Contact {
   private fb = inject(FormBuilder);
   private messageService = inject(MessageService);
+  isBrowser = signal(false);
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser.set(isPlatformBrowser(this.platformId));
+  }
+  ngAfterViewInit() {
+    if (this.isBrowser()) {
+      Aos.init({
+        duration: 500,
+        once: false,
+        mirror: false,
+        easing: 'ease-out-cubic',
+        startEvent: 'DOMContentLoaded',
+        offset: 150,
+      });
+      Aos.refresh();
+    }
+  }
 
   // * Signals for form state
   formSubmitted = signal(false);

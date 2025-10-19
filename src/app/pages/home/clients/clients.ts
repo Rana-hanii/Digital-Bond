@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
-import { Carousel } from "../../components/carousel/carousel";
+import { Component, Inject, PLATFORM_ID, signal } from '@angular/core';
+import { Carousel } from '../../components/carousel/carousel';
 import { IClient } from '../../../core/interfaces/IClint';
-
-
-
-
+import { isPlatformBrowser } from '@angular/common';
+import Aos from 'aos';
 
 @Component({
   selector: 'app-clients',
   imports: [Carousel],
   templateUrl: './clients.html',
-  styleUrl: './clients.css'
+  styleUrl: './clients.css',
 })
 export class Clients {
   clients: IClient[] = [];
   moreClients: IClient[] = [];
   responsiveOptions: any[] = [];
+  isBrowser = signal(false);
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    this.isBrowser.set(isPlatformBrowser(this.platformId));
+  }
 
   ngOnInit() {
     this.clients = [
@@ -73,5 +76,18 @@ export class Clients {
       { breakpoint: '767px', numVisible: 1, numScroll: 1 },
     ];
   }
-
+  ngAfterViewInit() {
+     
+      if (this.isBrowser()) {
+        Aos.init({
+          duration: 400,
+          once: false,
+          mirror: false,
+          easing: 'ease-out-cubic',
+          startEvent: 'DOMContentLoaded',
+          offset: 150,
+        });
+        Aos.refresh();
+      }
+    }
 }
