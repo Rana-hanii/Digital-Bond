@@ -81,7 +81,7 @@ export class Clients {
       if (this.isBrowser()) {
         Aos.init({
           duration: 400,
-          once: false,
+          once: true,
           mirror: false,
           easing: 'ease-out-cubic',
           startEvent: 'DOMContentLoaded',

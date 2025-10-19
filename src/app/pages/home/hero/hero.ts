@@ -23,6 +23,7 @@ export class Hero implements AfterViewInit {
       easing: 'ease-out',
     });
 
+    
     const observer = new IntersectionObserver(
       async (entries) => {
         if (entries[0].isIntersecting) {
