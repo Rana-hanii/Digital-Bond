@@ -37,18 +37,20 @@ export class Careers implements OnInit {
       { breakpoint: '767px', numVisible: 1, numScroll: 1 },
     ];
   }
-   ngAfterViewInit() {
-     
-      if (this.isBrowser()) {
-        Aos.init({
-          duration: 500,
-          once: false,
-          mirror: false,
-          easing: 'ease-out-cubic',
-          startEvent: 'DOMContentLoaded',
-          offset: 150,
-        });
-        Aos.refresh();
-      }
+  ngAfterViewInit() {
+    if (this.isBrowser()) {
+      Aos.init({
+        duration: 500,
+        once: false,
+        mirror: false,
+        easing: 'ease-out-cubic',
+        startEvent: 'DOMContentLoaded',
+        offset: 150,
+        disable: function () {
+          return window.innerWidth < 768;
+        },
+      });
+      Aos.refresh();
     }
+  }
 }

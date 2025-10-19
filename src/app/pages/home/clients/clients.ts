@@ -85,7 +85,7 @@ export class Clients {
           mirror: false,
           easing: 'ease-out-cubic',
           startEvent: 'DOMContentLoaded',
-          offset: 150,
+          offset: 120,
         });
         Aos.refresh();
       }

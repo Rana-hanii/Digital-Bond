@@ -16,7 +16,6 @@ export class About {
   }
 
   ngAfterViewInit() {
-   
     if (this.isBrowser()) {
       Aos.init({
         duration: 500,
@@ -25,6 +24,9 @@ export class About {
         easing: 'ease-out-cubic',
         startEvent: 'DOMContentLoaded',
         offset: 150,
+        disable: function () {
+          return window.innerWidth < 768;
+        },
       });
       Aos.refresh();
     }

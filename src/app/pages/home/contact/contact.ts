@@ -41,6 +41,9 @@ export class Contact {
         easing: 'ease-out-cubic',
         startEvent: 'DOMContentLoaded',
         offset: 150,
+        disable: function () {
+          return window.innerWidth < 768;
+        },
       });
       Aos.refresh();
     }

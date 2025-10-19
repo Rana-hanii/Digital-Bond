@@ -24,7 +24,10 @@ export class Projects {
         mirror: false,
         easing: 'ease-out-cubic',
         startEvent: 'DOMContentLoaded',
-        offset: 150,
+        offset: 120,
+         disable: function () {
+          return window.innerWidth < 768;
+        },
       });
       Aos.refresh();
     }
