@@ -3,7 +3,9 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
-
+ html{
+  scroll-behavior: smooth !important;
+ }
 
 /**fonts */
 body {
@@ -17,6 +19,7 @@ body {
 }
 
 /* !general styles */
+
 span{
     position: relative;
 }

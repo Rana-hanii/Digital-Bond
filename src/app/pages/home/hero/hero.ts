@@ -14,11 +14,12 @@ export class Hero implements AfterViewInit {
 
   async ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
-    AOS.init({
+    setTimeout(() =>  AOS.init({
       duration: 600,
       once: true,
       easing: 'ease-out',
       disable: () => window.innerWidth < 768,
-    });
+    }), 1000);
+   
 }
 }
