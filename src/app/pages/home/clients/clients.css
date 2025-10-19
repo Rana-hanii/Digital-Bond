@@ -1,7 +1,5 @@
 
 .card-container {
-
-  
   position: relative;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -24,8 +22,6 @@
 }
 
 .card .front-content h4 {
-  font-size: 32px;
-  font-weight: 700;
   opacity: 1;
   background: linear-gradient(-45deg, #f56b6b 0%, #ab2322 100% );
   background-clip: text;
@@ -59,8 +55,8 @@
 }
 
 .card .content .heading {
-  font-size: 32px;
-  font-weight: 700;
+  /* font-size: 24px; */
+  /* font-weight: 700; */
 }
 
 .card:hover .content {
