@@ -23,4 +23,5 @@ export class Carousel {
     if (!image) return '/images/placeholder.jpg';
     return image.startsWith('/images/') ? image : `/images/${this.folder}/${image}`;
   }
+  
 }
