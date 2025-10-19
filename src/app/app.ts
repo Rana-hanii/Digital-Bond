@@ -22,10 +22,10 @@ export class App {
 
   ngOnInit(): void {
     // * Spinner
-    this.ngxSpinnerService.show();
-    setTimeout(() => {
-      this.ngxSpinnerService.hide();
-    }, 1000);
+    // this.ngxSpinnerService.show();
+    // setTimeout(() => {
+    //   this.ngxSpinnerService.hide();
+    // }, 1000);
 
     // * SEO Meta Tags
     this.titleService.setTitle('Digital Bond | Creative Marketing Agency');
