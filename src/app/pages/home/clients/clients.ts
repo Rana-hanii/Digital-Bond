@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { Carousel } from "../../components/carousel/carousel";
+import { IClient } from '../../../core/interfaces/IClint';
 
 
 
-interface client {
-  name: string;
-  image: string;
-}  
 
 
 @Component({
@@ -16,8 +13,8 @@ interface client {
   styleUrl: './clients.css'
 })
 export class Clients {
-  clients: client[] = [];
-  moreClients: client[] = [];
+  clients: IClient[] = [];
+  moreClients: IClient[] = [];
   responsiveOptions: any[] = [];
 
   ngOnInit() {

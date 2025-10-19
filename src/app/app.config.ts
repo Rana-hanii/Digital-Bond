@@ -11,6 +11,9 @@ import { MessageService } from 'primeng/api';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 
+
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -27,5 +30,6 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+    
   ],
 };

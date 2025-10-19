@@ -1,5 +1,11 @@
 <app-navbar></app-navbar>
+@defer (on idle) {
 <section id="hero"><app-hero></app-hero></section>
+} @placeholder {
+<div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+</div>
+}
 <section id="about"><app-about></app-about></section>
 <section id="careers"><app-careers></app-careers></section>
 <section id="services"><app-service></app-service></section>
@@ -7,5 +13,3 @@
 <section id="projects"><app-projects></app-projects></section>
 <section id="contact"><app-contact></app-contact></section>
 <app-footer></app-footer>
-
-

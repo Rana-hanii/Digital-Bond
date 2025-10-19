@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Carousel } from '../../components/carousel/carousel';
+import { ITeam } from '../../../core/interfaces/ITeam';
 
-interface Team {
-  name: string;
-  image: string;
-}
+
 
 @Component({
   selector: 'app-careers',
@@ -14,7 +11,7 @@ interface Team {
   styleUrl: './careers.css',
 })
 export class Careers implements OnInit {
-  teams: Team[] = [];
+  teams: ITeam[] = [];
   responsiveOptions: any[] = [];
 
   ngOnInit() {

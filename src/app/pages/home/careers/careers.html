@@ -5,9 +5,17 @@
                 <span class="block my-3"></span>
             </h4>
         </header>
+        @defer (on idle) {
         <app-carousel [items]="teams" [numScroll]="1" [numVisible]="5" [folder]="'slider'"
             [responsiveOptions]="responsiveOptions" [autoplayInterval]="2000" [circular]="true">
         </app-carousel>
+        } @placeholder {
+        <div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+            <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+            <!-- <p class="mt-3 text-sm"></p> -->
+        </div>
+        }
+
         <button
             class="bg-[#ab2322] text-white font-semibold mx-auto py-3 px-4 rounded-lg shadow-2xl/40 flex items-center justify-center hover:bg-[#9f1f1f] hover:-translate-y-1 transition-all duration-500 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 me-2">

@@ -3,6 +3,8 @@
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
+
+
 /**fonts */
 body {
   font-family: 'Poppins', sans-serif;
