@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:ssr": "ng build && ng run Digital-Bond:server",
+    "serve:ssr": "netlify dev",
+    "prerender": "ng run Digital-Bond:prerender",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:Digital-Bond": "node dist/Digital-Bond/server/server.mjs"
+    "test": "ng test"
   },
   "prettier": {
     "printWidth": 100,
@@ -23,6 +25,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^20.3.6",
     "@angular/animations": "^20.3.6",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
