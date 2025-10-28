@@ -29,11 +29,5 @@ import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
   styleUrl: './home.css',
 })
 export class Home {
-ngxSpinnerService=inject(NgxSpinnerService)
- ngOnInit(): void {
-    this.ngxSpinnerService.show();
-    setTimeout(() => {
-      this.ngxSpinnerService.hide();
-    }, 4000);
-  }
+
 }

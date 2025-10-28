@@ -54,10 +54,6 @@
   transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.card .content .heading {
-  /* font-size: 24px; */
-  /* font-weight: 700; */
-}
 
 .card:hover .content {
   transform: translateY(0);
