@@ -21,11 +21,6 @@ export class Navbar {
     }
   }
 
-  ngAfterViewInit(): void {
-    
- 
-  }
-
   private observeSections() {
     const sections = document.querySelectorAll('section[id]');
     if (!sections.length) return;
