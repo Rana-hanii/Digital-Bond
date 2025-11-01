@@ -1,7 +1,8 @@
 :host ::ng-deep .p-inputtext {
   background-color: #f9f9f9 !important;
   border-radius: 9.91px !important;
-  color: #a1a4a9 !important;
+  color: #5d6064 !important;
+  font-weight: 600 !important;
   font-size: 13.88px !important;
   border: #e0e0e9 1px solid !important;
   box-shadow: 0px 10.09px 20.18px 0px rgba(68, 97, 242, 0.05) !important;
@@ -47,7 +48,8 @@
 :host ::ng-deep .p-textarea {
   background-color: #f9f9f9 !important;
   border-radius: 20px !important;
-  color: #a1a4a9 !important;
+  color: #5d6064 !important;
+  font-weight: 600 !important;
   font-size: 13.88px !important;
   border: #e0e0e9 1px solid !important;
   box-shadow: 0px 10.09px 20.18px 0px rgba(171, 35, 34, 0.05) !important;

@@ -1,6 +1,7 @@
 <div class="card">
-  <p-carousel [value]="items" [numVisible]="numVisible" [numScroll]="numScroll" [circular]="circular"
-    [responsiveOptions]="responsiveOptions" [autoplayInterval]="autoplayInterval">
+  <p-carousel   addAriaLabels="{ prev: 'Previous slide', next: 'Next slide' }" [value]="items" [numVisible]="numVisible" [numScroll]="numScroll" [circular]="circular"
+    [responsiveOptions]="responsiveOptions" [autoplayInterval]="autoplayInterval"   [prevButtonProps]="prevButtonProps"
+  [nextButtonProps]="nextButtonProps">
     <ng-template pTemplate="item" let-item>
       <div class="m-2 p-4">
         <div class="rounded-2xl hover:scale-105 transition-all duration-500 overflow-hidden">
@@ -12,5 +13,6 @@
         </div>
       </div>
     </ng-template>
+    
   </p-carousel>
-</div>
+</div>   
