@@ -49,13 +49,16 @@
                 }
               ],
               "outputHashing": "all",
-
               "sourceMap": false,
-
               "optimization": {
                 "scripts": true,
-                "styles": true,
-                "fonts": true
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": {
+                  "inline": true
+                }
               }
             },
             "development": {

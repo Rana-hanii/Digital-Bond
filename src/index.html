@@ -9,11 +9,9 @@
   <meta name="googlebot" content="index, follow">
 
   <title>Digital Bond | Creative Marketing & Digital Transformation Solutions</title>
-
-
   <base href="/" />
 
-
+  <!--! Meta Tags For SEO -->
   <meta name="description"
     content="Digital Bond is a creative marketing and digital transformation agency helping brands grow beyond limits." />
   <meta name="keywords"
@@ -31,18 +29,20 @@
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-
+  <!--! Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
+  <link rel="preload"
     href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
-
-
+  <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="styles.css">
+  </noscript>
+  <!--! images -->
   <link rel="preload" as="image" href="/images/hero.webp" />
   <link rel="preload" as="image" href="/images/footer.webp" />
   <link rel="preload" as="image" href="/images/careers.webp" />
-
 
   <meta name="theme-color" content="#000000" />
 </head>
