@@ -1,59 +1,53 @@
 <section class="bg-white !rounded-t-3xl py-20 relative -top-12 z-20" data-aos="fade-up" data-aos-delay="700">
-    <div class="container mx-auto px-4">
-        <header class="flex justify-center items-center flex-col my-10">
-            <h4 class="text-2xl text-center font-atma font-bold uppercase mb-4 text-[#ab2322]">
-                Contact Us
-                <span class="block my-3"></span>
-            </h4>
-            <p class="text-lg text-gray-600 mb-8">
-                Have questions or need assistance? We're here to help!
-            </p>
-        </header>
-        <p-toast position="bottom-right" styleClass="custom-toast"></p-toast>
-        <div class="card flex justify-center">
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
-                class="flex flex-col gap-6 p-10 w-full max-w-4xl rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 ">
+  <div class="container mx-auto px-4">
+    <header class="flex justify-center items-center flex-col my-10">
+      <h4 class="text-2xl text-center font-atma font-bold uppercase mb-4 text-[#ab2322]">
+        Contact Us
+        <span class="block my-3"></span>
+      </h4>
+      <p class="text-lg text-gray-600 mb-8">
+        Have questions or need assistance? We're here to help!
+      </p>
+    </header>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex flex-col gap-2">
-                        <input pInputText id="name" placeholder="Your Name" formControlName="name"
-                            [class.ng-invalid]="isInvalid('name')" class="p-3 rounded-lg" />
-                        @if (isInvalid('name')) {
-                        <p-message severity="error" [text]="getErrorMessage('name')" size="small" variant="simple" />
-                        }
-                    </div>
+    <p-toast position="bottom-right" styleClass="custom-toast"></p-toast>
 
-                    <div class="flex flex-col gap-2">
-                        <input pInputText id="email" placeholder="Your Email" formControlName="email"
-                            [class.ng-invalid]="isInvalid('email')" class="p-3 rounded-lg" />
-                        @if (isInvalid('email')) {
-                        <p-message severity="error" [text]="getErrorMessage('email')" size="small" variant="simple" />
-                        }
-                    </div>
-                </div>
+    <div class="card flex justify-center">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-6 p-10 w-full max-w-4xl rounded-2xl hover:shadow-2xl transition-all duration-500">
 
-                <div class="flex flex-col gap-2">
-                    <input pInputText id="subject" placeholder="Subject" formControlName="subject"
-                        [class.ng-invalid]="isInvalid('subject')" class="p-3 rounded-lg" />
-                    @if (isInvalid('subject')) {
-                    <p-message severity="error" [text]="getErrorMessage('subject')" size="small" variant="simple" />
-                    }
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex flex-col gap-2">
+            <input pInputText id="name" placeholder="Your Name" formControlName="name"
+              [class.ng-invalid]="isInvalid('name')" class="p-3 rounded-lg" />
+            <p-message *ngIf="isInvalid('name')" severity="error" [text]="getErrorMessage('name')" size="small" variant="simple" />
+          </div>
 
-                <div class="flex flex-col gap-2">
-                    <textarea pInputTextarea id="message" placeholder="Your Message" formControlName="message"
-                        [autoResize]="true" rows="5" [class.ng-invalid]="isInvalid('message')"
-                        class="p-3 rounded-lg"></textarea>
-                    @if (isInvalid('message')) {
-                    <p-message severity="error" [text]="getErrorMessage('message')" size="small" variant="simple" />
-                    }
-                </div>
-                <button pButton type="submit" [loading]="loading()" [disabled]="loading()" label="Send Message"
-                    icon="pi pi-send" aria-label="Send message"
-                    class="w-full p-3 text-lg font-semibold hover:-translate-y-1 transition-all duration-500">
-                </button>
-
-            </form>
+          <div class="flex flex-col gap-2">
+            <input pInputText id="email" placeholder="Your Email" formControlName="email"
+              [class.ng-invalid]="isInvalid('email')" class="p-3 rounded-lg" />
+            <p-message *ngIf="isInvalid('email')" severity="error" [text]="getErrorMessage('email')" size="small" variant="simple" />
+          </div>
         </div>
+
+        <div class="flex flex-col gap-2">
+          <input pInputText id="subject" placeholder="Subject" formControlName="subject"
+            [class.ng-invalid]="isInvalid('subject')" class="p-3 rounded-lg" />
+          <p-message *ngIf="isInvalid('subject')" severity="error" [text]="getErrorMessage('subject')" size="small" variant="simple" />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <textarea pInputTextarea id="message" placeholder="Your Message" formControlName="message"
+            [autoResize]="true" rows="5" [class.ng-invalid]="isInvalid('message')" class="p-3 rounded-lg"></textarea>
+          <p-message *ngIf="isInvalid('message')" severity="error" [text]="getErrorMessage('message')" size="small" variant="simple" />
+        </div>
+
+        <button pButton type="submit" [loading]="loading()" [disabled]="loading()" label="Send Message"
+          icon="pi pi-send" aria-label="Send message"
+          class="w-full p-3 text-lg font-semibold hover:transform transition-transform duration-300">
+        </button>
+
+      </form>
     </div>
-</section>
+  </div>
+</section> 

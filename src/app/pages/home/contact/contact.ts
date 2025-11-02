@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, inject, signal, computed, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject, signal, Inject, PLATFORM_ID, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -8,6 +8,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { ToastModule } from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
 import Aos from 'aos';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -22,9 +23,10 @@ import Aos from 'aos';
   ],
   providers: [MessageService],
   templateUrl: './contact.html',
-  styleUrl: './contact.css',
+  styleUrls: ['./contact.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Contact {
+export class Contact implements AfterViewInit {
   private fb = inject(FormBuilder);
   private messageService = inject(MessageService);
   isBrowser = signal(false);
@@ -32,21 +34,27 @@ export class Contact {
   constructor(@Inject(PLATFORM_ID) private platformId: object) {
     this.isBrowser.set(isPlatformBrowser(this.platformId));
   }
+
   ngAfterViewInit() {
     if (this.isBrowser()) {
+      requestAnimationFrame(() => Aos.refresh()); // ✅ أقل Forced Reflow
       Aos.init({
         duration: 500,
-        once: false ,
+        once: false,
         mirror: false,
         easing: 'ease-out-cubic',
         startEvent: 'DOMContentLoaded',
         offset: 150,
-        disable: function () {
-          return window.innerWidth < 768;
-        },
+        disable: () => window.innerWidth < 768,
       });
-      Aos.refresh();
     }
+
+    // ✅ Debounce على كل controls لتقليل reflows
+    Object.keys(this.contactForm.controls).forEach(key => {
+      this.contactForm.get(key)!.valueChanges
+        .pipe(debounceTime(100))
+        .subscribe();
+    });
   }
 
   // * Signals for form state
@@ -109,7 +117,7 @@ export class Contact {
     this.loading.set(true);
 
     try {
-      //!! Simulate API call
+      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       this.messageService.add({
