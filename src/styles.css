@@ -57,8 +57,7 @@ span::after {
 
 @font-face {
   font-family: 'Font Awesome 6 Free';
-  src: url('/media/fa-solid-900.woff2') format('woff2'),
-       url('/media/fa-solid-900.woff') format('woff');
+  src: url('/media/fa-solid-900.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -66,8 +65,7 @@ span::after {
 
 @font-face {
   font-family: 'Font Awesome 6 Brands';
-  src: url('/media/fa-brands-400.woff2') format('woff2'),
-       url('/media/fa-brands-400.woff') format('woff');
+  src: url('/media/fa-brands-400.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
