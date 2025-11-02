@@ -1,3 +1,5 @@
+@import "./styles/fontawesome-fonts.css";
+
 @import 'tailwindcss';
 @import 'flowbite/src/themes/default';
 @plugin "flowbite/plugin";
@@ -22,7 +24,8 @@ body {
 
 span{
     position: relative;
-}
+} 
+
 span::after {
   content: "";
   position: absolute;
