@@ -1,54 +1,97 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
 
-<head>
+    <title>Digital Bond | Creative Marketing & Digital Transformation Solutions</title>
+    <base href="/" />
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
+    <!-- ✅ SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Digital Bond is a creative marketing and digital transformation agency helping brands grow beyond limits."
+    />
+    <meta
+      name="keywords"
+      content="Digital Marketing, Web Development, Branding, SEO, Mobile Apps, Media Production, Influencer Marketing"
+    />
+    <meta name="author" content="Digital Bond" />
+    <meta property="og:title" content="Digital Bond – Creative Marketing Agency" />
+    <meta
+      property="og:description"
+      content="We help brands grow with creativity, innovation, and technology."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.digitalbondmena.com" />
+    <meta property="og:image" content="https://www.digitalbondmena.com/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Digital Bond – Creative Marketing Agency" />
+    <meta
+      name="twitter:description"
+      content="Helping brands grow through creativity, innovation, and technology."
+    />
 
-  <title>Digital Bond | Creative Marketing & Digital Transformation Solutions</title>
-  <base href="/" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <!--! Meta Tags For SEO -->
-  <meta name="description"
-    content="Digital Bond is a creative marketing and digital transformation agency helping brands grow beyond limits." />
-  <meta name="keywords"
-    content="Digital Marketing, Web Development, Branding, SEO, Mobile Apps, Media Production, Influencer Marketing" />
-  <meta name="author" content="Digital Bond" />
-  <meta property="og:title" content="Digital Bond – Creative Marketing Agency" />
-  <meta property="og:description" content="We help brands grow with creativity, innovation, and technology." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.digitalbondmena.com" />
-  <meta property="og:image" content="https://www.digitalbondmena.com/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Digital Bond – Creative Marketing Agency" />
-  <meta name="twitter:description" content="Helping brands grow through creativity, innovation, and technology." />
+    <!-- ✅ Fonts Optimization -->
+    <!-- Preconnect reduces DNS + TLS time -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <!-- Force font-display:swap for performance -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- ✅ FontAwesome optimization -->
+    <!-- Preload fonts but prevent render blocking -->
+    <link
+      rel="preload"
+      href="/media/fa-solid-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/media/fa-brands-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
-  <!--! Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <!--! Fontawsome -->
-  <link rel="preload" as="font" type="font/woff2" href="/media/fa-solid-900.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/media/fa-brands-400.woff2" crossorigin>
+    <!-- Optional: font-display fallback via CSS -->
+    <style>
+      @font-face {
+        font-family: "Font Awesome 6 Free";
+        src: url("/media/fa-solid-900.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Font Awesome 6 Brands";
+        src: url("/media/fa-brands-400.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
 
-  <!--! images -->
-  <link rel="preload" as="image" href="/images/hero.webp" />
-  <link rel="preload" as="image" href="/images/footer.webp" />
-  <link rel="preload" as="image" href="/images/careers.webp" />
+    <!-- ✅ Image Preload for LCP elements -->
+    <link rel="preload" as="image" href="/images/hero.webp" />
+    <link rel="preload" as="image" href="/images/footer.webp" />
+    <link rel="preload" as="image" href="/images/careers.webp" />
 
-  <meta name="theme-color" content="#000000" />
-</head>
+    <!-- ✅ Theme -->
+    <meta name="theme-color" content="#000000" />
+  </head>
 
-<body>
-  <app-root></app-root>
-</body>
-
+  <body>
+    <app-root></app-root>
+  </body>
 </html>
