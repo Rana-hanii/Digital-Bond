@@ -1,51 +1,63 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
-
+import { afterNextRender, Component, inject, PLATFORM_ID, signal } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  standalone: true,
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class Navbar {
-  isHeroVisible = signal(true);
+   isHeroVisible = signal(true);
   activeSection = signal('hero');
 
   private platformId = inject(PLATFORM_ID);
-  isBrowser = signal(isPlatformBrowser(this.platformId));
+  private observer?: IntersectionObserver;
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.observeSections();
-    }
+  constructor() {
+    // نستخدم afterNextRender بدل ngOnInit لأن Angular 20 بتتعامل مع defer والمحتوى ممكن يحمّل متأخر
+    afterNextRender(() => {
+      if (isPlatformBrowser(this.platformId)) {
+        // ننتظر شوية عشان الـ deferred components تتحمل
+        setTimeout(() => {
+          this.initObserver();
+          this.scrollToSection('hero'); // يخلي الصفحة تبدأ من الـ hero
+        }, 700);
+      }
+    });
   }
-
-  private observeSections() {
+ 
+  private initObserver() {
     const sections = document.querySelectorAll('section[id]');
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
+    // نلغي أي observer قديم
+    if (this.observer) this.observer.disconnect();
+
+    this.observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.activeSection.set(entry.target.id);
-            this.isHeroVisible.set(entry.target.id === 'hero');
+        for (const entry of entries) {
+          const id = entry.target.getAttribute('id');
+          if (entry.isIntersecting && id) {
+            this.activeSection.set(id);
+            this.isHeroVisible.set(id === 'hero');
           }
-        });
+        }
       },
-      { threshold: 0.6 }
+      {
+        threshold: 0.4, // تخلي التبديل يحصل بمجرد ظهور نص السكشن
+      }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => this.observer!.observe(section));
   }
 
-  scrollToSection(sectionId: string) {
-    if (!isPlatformBrowser(this.platformId)) return;
-
-    const section = document.querySelector(`#${sectionId}`);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+  scrollToSection(id: string) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.activeSection.set(id);
+      this.isHeroVisible.set(id === 'hero');
     }
   }
 }

@@ -41,14 +41,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Force font-display:swap for performance -->
+    <!-- Preload + non-blocking load -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
-    <!-- ✅ FontAwesome optimization -->
-    <!-- Preload fonts but prevent render blocking -->
+    <!-- ✅ Font Awesome optimization -->
+    <!-- Preload + swap for CLS prevention -->
     <link
       rel="preload"
       href="/media/fa-solid-900.woff2"
@@ -64,7 +77,6 @@
       crossorigin
     />
 
-    <!-- Optional: font-display fallback via CSS -->
     <style>
       @font-face {
         font-family: "Font Awesome 6 Free";
@@ -83,7 +95,13 @@
     </style>
 
     <!-- ✅ Image Preload for LCP elements -->
-    <link rel="preload" as="image" href="/images/hero.webp" />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-bg.webp"
+      fetchpriority="high"
+      importance="high"
+    />
     <link rel="preload" as="image" href="/images/footer.webp" />
     <link rel="preload" as="image" href="/images/careers.webp" />
 

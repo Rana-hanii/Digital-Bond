@@ -1,12 +1,52 @@
-
 <app-navbar></app-navbar>
-<section id="hero"><app-hero></app-hero></section>
+<section id="hero">
+    <app-hero></app-hero>
+</section>
+
+@defer (on idle) {
 <section id="about"><app-about></app-about></section>
+}
+
+@defer (on viewport) {
 <section id="careers"><app-careers></app-careers></section>
+} @placeholder {
+<div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+</div>
+}
+
+@defer (on viewport) {
 <section id="services"><app-service></app-service></section>
+} @placeholder {
+<div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+</div>
+}
+
+@defer (on viewport) {
 <section id="clients"><app-clients></app-clients></section>
+} @placeholder {
+<div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+</div>
+}
+
+@defer (on viewport) {
 <section id="projects"><app-projects></app-projects></section>
+} @placeholder {
+<div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+</div>
+}
+
+@defer (on viewport) {
 <section id="contact"><app-contact></app-contact></section>
+} @placeholder {
+<div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
+    <div class="w-10 h-10 border-4 border-gray-300 border-t-red-500 rounded-full animate-spin"></div>
+</div>
+}
+
+@defer (on idle) {
 <app-footer></app-footer>
-
-
+}
