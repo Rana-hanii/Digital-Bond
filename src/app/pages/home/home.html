@@ -7,7 +7,7 @@
 <section id="about"><app-about></app-about></section>
 }
 
-@defer (on viewport) {
+@defer (on idle) {
 <section id="careers"><app-careers></app-careers></section>
 } @placeholder {
 <div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
@@ -15,7 +15,7 @@
 </div>
 }
 
-@defer (on viewport) {
+@defer (on idle) {
 <section id="services"><app-service></app-service></section>
 } @placeholder {
 <div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
@@ -23,7 +23,7 @@
 </div>
 }
 
-@defer (on viewport) {
+@defer (on idle) {
 <section id="clients"><app-clients></app-clients></section>
 } @placeholder {
 <div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
@@ -31,7 +31,7 @@
 </div>
 }
 
-@defer (on viewport) {
+@defer (on idle) {
 <section id="projects"><app-projects></app-projects></section>
 } @placeholder {
 <div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
@@ -39,7 +39,7 @@
 </div>
 }
 
-@defer (on viewport) {
+@defer (on idle) {
 <section id="contact"><app-contact></app-contact></section>
 } @placeholder {
 <div class="h-[400px] flex flex-col items-center justify-center text-gray-400">
