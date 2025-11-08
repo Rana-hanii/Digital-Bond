@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /api/
+Disallow: /server/
+Disallow: /assets/
+Allow: /
+Sitemap: https://digital-bond-eight.vercel.app/sitemap.xml
