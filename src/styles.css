@@ -1,10 +1,15 @@
-@import "./styles/fontawesome-fonts.css";
+
 
 @import 'tailwindcss';
 @import 'flowbite/src/themes/default';
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
 
+
+
+
+
+/** Fonts */
 @font-face {
   font-family: 'Font Awesome 6 Free';
   src: url('/media/fa-solid-900.woff2') format('woff2');
@@ -41,6 +46,7 @@ body {
 span{
     position: relative;
 } 
+
 
 span::after {
   content: "";
