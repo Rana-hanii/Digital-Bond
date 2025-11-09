@@ -15,13 +15,12 @@ export class Navbar {
   private observer?: IntersectionObserver;
 
   constructor() {
-    // نستخدم afterNextRender بدل ngOnInit لأن Angular 20 بتتعامل مع defer والمحتوى ممكن يحمّل متأخر
     afterNextRender(() => {
       if (isPlatformBrowser(this.platformId)) {
-        // ننتظر شوية عشان الـ deferred components تتحمل
+      
         setTimeout(() => {
           this.initObserver();
-          this.scrollToSection('hero'); // يخلي الصفحة تبدأ من الـ hero
+          this.scrollToSection('hero'); 
         }, 700);
       }
     });
@@ -31,7 +30,7 @@ export class Navbar {
     const sections = document.querySelectorAll('section[id]');
     if (!sections.length) return;
 
-    // نلغي أي observer قديم
+    
     if (this.observer) this.observer.disconnect();
 
     this.observer = new IntersectionObserver(
@@ -45,7 +44,7 @@ export class Navbar {
         }
       },
       {
-        threshold: 0.4, // تخلي التبديل يحصل بمجرد ظهور نص السكشن
+        threshold: 0.4,
       }
     );
 

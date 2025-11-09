@@ -1,17 +1,12 @@
 
 <app-navbar></app-navbar>
-
-@defer (  ) {
-
-}
-
 <section id="hero"><app-hero></app-hero></section>
-<section id="about"><div class="lazy-root" [appLazyLoad]="aboutLoader"></div></section>
-<section id="careers"><div class="lazy-root" [appLazyLoad]="careersLoader"></div></section>
-<section id="services"><div class="lazy-root" [appLazyLoad]="serviceLoader"></div></section>
-<section id="clients"><div class="lazy-root" [appLazyLoad]="clientsLoader"></div></section>
-<section id="projects"><div class="lazy-root" [appLazyLoad]="projectsLoader"></div></section>
-<section id="contact"><div class="lazy-root" [appLazyLoad]="contactLoader"></div></section>
+<section id="about"><app-about></app-about></section>
+<section id="careers"><app-careers></app-careers></section>
+<section id="services"><app-service></app-service></section>
+<section id="clients"><app-clients></app-clients></section>
+<section id="projects"><app-projects></app-projects></section>
+<section id="contact"><app-contact></app-contact></section>
 <app-footer></app-footer>
 
  

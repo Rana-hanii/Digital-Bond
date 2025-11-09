@@ -1,28 +1,36 @@
 import { Component, Inject, inject, PLATFORM_ID, signal } from '@angular/core';
 import { Footer } from '../components/footer/footer';
 import { Navbar } from '../components/navbar/navbar';
+import { About } from './about/about';
+import { Careers } from './careers/careers';
+import { Clients } from './clients/clients';
+import { Contact } from './contact/contact';
 import { Hero } from './hero/hero';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { Projects } from './projects/projects';
+import { Service } from './service/service';
+import { NgxSpinnerModule} from 'ngx-spinner';
 import { isPlatformBrowser } from '@angular/common';
-import { LazyLoadDirective } from '../../core/directives/lazy-load.directive';
 
 @Component({
   selector: 'app-home',
-  imports: [Navbar, Footer, Hero, LazyLoadDirective, NgxSpinnerModule],
+  imports: [
+    Navbar,
+    Footer,
+    Hero,
+    About,
+    Careers,
+    Service,
+    Clients,
+    Projects,
+    Contact,
+    NgxSpinnerModule,
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
   private observer!: IntersectionObserver;
   heroVisible = signal(true);
-
-  // loaders used by the template (can't use arrow functions inline in templates)
-  aboutLoader = () => import('./about/about').then(m => m.About);
-  careersLoader = () => import('./careers/careers').then(m => m.Careers);
-  serviceLoader = () => import('./service/service').then(m => m.Service);
-  clientsLoader = () => import('./clients/clients').then(m => m.Clients);
-  projectsLoader = () => import('./projects/projects').then(m => m.Projects);
-  contactLoader = () => import('./contact/contact').then(m => m.Contact);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
