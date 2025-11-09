@@ -50,6 +50,7 @@
               ],
               "outputHashing": "all",
               "sourceMap": false,
+              "aot": true,
               "optimization": {
                 "scripts": true,
                 "styles": {
