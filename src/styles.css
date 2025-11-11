@@ -53,6 +53,7 @@ span::after {
 }  
 h2,h3,h4,h5,h6 {
  letter-spacing: 0.08em;
+ font-family: 'Chewy', cursive;
 }
 
 /*! Scroll bar  */
