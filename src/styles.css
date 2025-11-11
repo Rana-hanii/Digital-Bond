@@ -51,8 +51,8 @@ span::after {
   height: 4px;
   background-color: #ab2322;
 }  
-h1,h2,h3,h4,h5,h6 {
- letter-spacing: 0.09em;
+h2,h3,h4,h5,h6 {
+ letter-spacing: 0.08em;
 }
 
 /*! Scroll bar  */
